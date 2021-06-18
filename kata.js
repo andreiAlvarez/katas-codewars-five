@@ -20,3 +20,15 @@ let Cat = (function () {
 // kata 2
 
 const nouveau = (Constructor, ...args) => Reflect.construct(Constructor, args);
+
+// kata 3
+
+const isPrime = num => {
+  for (let i = 2; i <= num ** .5; i++) {
+    if (!(num % i)) return false;
+  }
+  return num > 1;
+};
+
+const prime = num =>
+  [...Array(++num).keys()].filter(isPrime);
