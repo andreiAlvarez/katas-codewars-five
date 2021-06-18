@@ -1,8 +1,8 @@
 // kata 1
 
-var Cat = (function () {
-  var catCount = 0, catAggWeight = 0;
-  var constr = function(name, weight) {
+let Cat = (function () {
+  let catCount = 0, catAggWeight = 0;
+  let constr = function(name, weight) {
     if(!name || !weight) {throw 'Must provide a name and a weight!';}
     catCount++;
     catAggWeight += weight;
@@ -16,3 +16,7 @@ var Cat = (function () {
   }
   return constr;
 }());
+
+// kata 2
+
+const nouveau = (Constructor, ...args) => Reflect.construct(Constructor, args);
