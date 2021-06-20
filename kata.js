@@ -32,3 +32,26 @@ const isPrime = num => {
 
 const prime = num =>
   [...Array(++num).keys()].filter(isPrime);
+
+
+// kata 4
+
+const createArgumentMap=(func,...vals)=>
+  func
+    .toString()
+    .match(/\(([^)]*)\)/)[1]
+    .split`,`.filter(e=>e)
+    .reduce((a,b,i)=>(a[b]=vals[i],a),{});
+
+// solution 2
+
+function createArgumentMap(func, ...args) {
+    let s = func.toString();
+    let [i, j] = [s.indexOf('('), s.indexOf(')')];
+    let p = s.slice(i+1, j).split(',');
+    if (!p[0].length) return [];
+    return p.reduce((a, v, i) => {
+        a[v] = args[i];
+        return a;
+    }, {});
+}
