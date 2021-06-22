@@ -55,3 +55,13 @@ function createArgumentMap(func, ...args) {
         return a;
     }, {});
 }
+
+// kata 5
+
+String.prototype.toBase64 = function() {
+  return (new Buffer(this.valueOf())).toString('base64')
+}
+
+String.prototype.fromBase64 = function() {
+  return (new Buffer(this.valueOf(), 'base64')).toString()
+};
