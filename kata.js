@@ -65,3 +65,11 @@ String.prototype.toBase64 = function() {
 String.prototype.fromBase64 = function() {
   return (new Buffer(this.valueOf(), 'base64')).toString()
 };
+
+// kata 6 
+
+const preOrder = (node) => node == null || node.data == null ? [] : [node.data].concat(preOrder(node.left)).concat(preOrder(node.right));
+
+const inOrder = (node) => node == null || node.data == null ? [] : inOrder(node.left).concat(node.data).concat(inOrder(node.right));
+
+const postOrder = (node) => node == null || node.data == null ? [] : postOrder(node.left).concat(postOrder(node.right)).concat(node.data);
