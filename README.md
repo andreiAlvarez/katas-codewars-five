@@ -19,3 +19,7 @@ https://www.codewars.com/kata/52fee0a131b8158492000120/train/javascript
 ## kata 5
 
 https://www.codewars.com/kata/5270f22f862516c686000161/train/javascript
+
+## kata 6
+
+https://www.codewars.com/kata/5268956c10342831a8000135/train/javascript
