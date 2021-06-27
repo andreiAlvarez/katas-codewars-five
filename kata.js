@@ -73,3 +73,25 @@ const preOrder = (node) => node == null || node.data == null ? [] : [node.data].
 const inOrder = (node) => node == null || node.data == null ? [] : inOrder(node.left).concat(node.data).concat(inOrder(node.right));
 
 const postOrder = (node) => node == null || node.data == null ? [] : postOrder(node.left).concat(postOrder(node.right)).concat(node.data);
+
+// kata 7 
+
+class Node {
+  constructor(value, left = null, right = null){
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+const isBST = node => {
+  const arr = inOrder(node);
+  
+  return arr.every( (v, i, a) => i == 0 ? true : v > a[i-1])
+    || arr.every( (v, i, a) => i == 0 ? true : v < a[i-1]);
+  
+  function inOrder(node) { 
+    if (node == undefined) return [];
+    return inOrder(node.left).concat(node.value).concat(inOrder(node.right)); 
+  }
+};
