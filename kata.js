@@ -95,3 +95,14 @@ const isBST = node => {
     return inOrder(node.left).concat(node.value).concat(inOrder(node.right)); 
   }
 };
+
+// kata 8
+
+const CaesarCipher = function (shift) {
+  const code = (str, shift) =>
+    str.toUpperCase().replace(/[A-Z]/g, val => String.fromCharCode(65 + (val.charCodeAt() + shift - 65) % 26));
+  this.encode = str =>
+    code(str, shift);
+  this.decode = str =>
+    code(str, 26 - shift);
+};
