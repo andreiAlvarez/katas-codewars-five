@@ -141,3 +141,15 @@ function plus(r) { return function(l) { return l + r; }; }
 function minus(r) { return function(l) { return l - r; }; }
 function times(r) { return function(l) { return l * r; }; }
 function dividedBy(r) { return function(l) { return l / r; }; }
+
+// kata 10 
+
+const loop_size = node => {
+  let visited = [];
+  while (!visited.includes(node)) {
+    visited.push(node);
+    node = node.next;
+  }
+  let distance = visited.length - visited.indexOf(node)
+  return distance;
+}; 
