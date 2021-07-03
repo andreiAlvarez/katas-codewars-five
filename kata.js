@@ -153,3 +153,10 @@ const loop_size = node => {
   let distance = visited.length - visited.indexOf(node)
   return distance;
 }; 
+
+// kata 11
+
+const convertFrac = (lst, i = 1) => {
+  while (!lst.every(([, den]) => i % den === 0)) i++
+  return lst.reduce((acc, curr) => acc + `(${curr[0] * i / curr[1]},${i})`,'')
+};
