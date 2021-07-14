@@ -160,3 +160,9 @@ const convertFrac = (lst, i = 1) => {
   while (!lst.every(([, den]) => i % den === 0)) i++
   return lst.reduce((acc, curr) => acc + `(${curr[0] * i / curr[1]},${i})`,'')
 };
+
+// kata 12 
+
+const hexStringToRGB = hexString =>
+  (([r, g, b]) => ({r, g, b}))
+  (hexString.match(/\w{2}/g).map(val => parseInt(val, 16)));
