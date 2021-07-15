@@ -166,3 +166,20 @@ const convertFrac = (lst, i = 1) => {
 const hexStringToRGB = hexString =>
   (([r, g, b]) => ({r, g, b}))
   (hexString.match(/\w{2}/g).map(val => parseInt(val, 16)));
+
+// kata 13
+
+ipsBetween=(...a)=>a.map(i=>i.split`.`.reduce((a,b,i)=>b*256**(3-i)+a,0)).reduce((a,b)=>b-a)
+
+// solution 2
+
+function ipsBetween(start, end){
+  return ipToInt32(end) - ipToInt32(start);
+}
+
+function ipToInt32(ip) {
+  return parseInt(ip.split('.').map(function(v) {
+    var bin = parseInt(v).toString(2);
+    return new Array(9 - bin.length).join('0') + bin;
+  }).join(''), 2);
+}
