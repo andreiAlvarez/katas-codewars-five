@@ -196,3 +196,38 @@ const solve = (map, miner, exit, path=[])=> {
          solve(map, {x: miner.x - 1, y: miner.y    }, exit, path.concat('left')) ||
          solve(map, {x: miner.x + 1, y: miner.y    }, exit, path.concat('right'));
 }
+
+// kata 15 
+
+const interpreter = (code, tape) =>
+  new Function('tape', ['let p = 0'].concat(
+    [...code].filter(c => /[><*\[\]]/.test(c)).map(c => {
+      return {
+        '>': 'if (++p >= tape.length) return tape',
+        '<': 'if (--p < 0) return tape',
+        '*': 'tape[p] ^= 1',
+        '[': 'while (tape[p] != 0) {',
+        ']': '}'
+      }[c]
+    }), ['return tape'])
+  .join('\n'))([...tape]).join('');
+
+// solution 2
+
+function interpreter(code, tape) {
+  const M = Array.from(tape, c => +c), J = {}, n = code.length, q = M.length;
+  for (let i = 0, p = 0, S = []; i < n; ++i)
+    switch (code[i]) {
+      case '[': S.push(i); break;
+      case ']': p = S.pop(), J[i] = p, J[p] = i; break;
+    }
+  for (let i = 0, p = 0; i < n; ++i)
+    switch (code[i]) {
+      case '>': if (++p >= q) return M.join(''); break;
+      case '<': if (--p < 0) return M.join(''); break;
+      case '*': M[p] ^= 1; break;
+      case '[': if (M[p] === 0) i = J[i]; break;
+      case ']': if (M[p] !== 0) i = J[i]; break;
+    }
+  return M.join('');
+}
